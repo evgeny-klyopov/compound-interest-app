@@ -1,2 +1,2 @@
 # compound-interest-app
-Compound Interest console app
+Compound Interest App
