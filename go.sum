@@ -5,8 +5,8 @@ github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d h1:U+s90UTSY
 github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/evgeny-klyopov/bashColor v1.0.2 h1:awl1vMCVUNOfoUZiIvzOiedByk7j0v81s4cFrYOin2k=
 github.com/evgeny-klyopov/bashColor v1.0.2/go.mod h1:odkFACSmaVB3T83YgYUXJxbkCy/fDDp4s3CuTOCpZcs=
-github.com/evgeny-klyopov/compound-interest v1.0.0 h1:tEvF+/6EctzH1dXfcZJpmKPQDfrgNvftpC4sbNPwpGA=
-github.com/evgeny-klyopov/compound-interest v1.0.0/go.mod h1:/eZPnCZ4l+OGoep5jjTadA1i13MG4+HsGsx+qONNvwI=
+github.com/evgeny-klyopov/compound-interest v1.1.0 h1:IiIB1iiFiUedeEnSlD52KgbOj4zMCE/G2qdxBIJsX8g=
+github.com/evgeny-klyopov/compound-interest v1.1.0/go.mod h1:/eZPnCZ4l+OGoep5jjTadA1i13MG4+HsGsx+qONNvwI=
 github.com/leekchan/accounting v1.0.0 h1:+Wd7dJ//dFPa28rc1hjyy+qzCbXPMR91Fb6F1VGTQHg=
 github.com/leekchan/accounting v1.0.0/go.mod h1:3timm6YPhY3YDaGxl0q3eaflX0eoSx3FXn7ckHe4tO0=
 github.com/lib/pq v1.0.0 h1:X5PMW56eZitiTeO7tKzZxFCSpbFZJtkMMooicw2us9A=

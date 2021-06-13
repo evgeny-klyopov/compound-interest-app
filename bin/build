@@ -1,15 +1,20 @@
 #!/bin/bash
-env GOARCH=amd64 GOOS=darwin go build github.com/evgeny-klyopov/compound-interest-app
+env GOARCH=amd64 GOOS=darwin go build -o comi github.com/evgeny-klyopov/compound-interest-app/cmd
 mv compound-interest-app comi
-tar -cvzf comi.darwin-amd64.tar.gz comi
-mv comi macos-comi
+tar -cvzf comi.macos-amd64.tar.gz comi
+rm comi
 
-env GOARCH=amd64 GOOS=linux go build github.com/evgeny-klyopov/compound-interest-app
+env GOARCH=amd64 GOOS=linux go build -o comi github.com/evgeny-klyopov/compound-interest-app/cmd
 mv compound-interest-app comi
 tar -cvzf comi.linux-amd64.tar.gz comi
-mv comi linux-comi
+rm comi
 
-env GOARCH=amd64 GOOS=windows go build github.com/evgeny-klyopov/compound-interest-app
+env GOARCH=amd64 GOOS=windows go build -o comi.exe github.com/evgeny-klyopov/compound-interest-app/cmd
 mv compound-interest-app.exe comi.exe
 tar -cvzf comi.windows-amd64.tar.gz comi.exe
-mv comi.exe windows-comi.exe
+rm comi.exe
+
+go build -o comi github.com/evgeny-klyopov/compound-interest-app/cmd
+mv compound-interest-app comi
+tar -cvzf comi.macos-arm64.tar.gz comi
+rm comi

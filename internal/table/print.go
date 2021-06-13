@@ -1,4 +1,4 @@
-package main
+package table
 
 import (
 	compoundInterest "github.com/evgeny-klyopov/compound-interest"
@@ -24,7 +24,13 @@ type total struct {
 	MonthlyDividend float64
 }
 
-func NewTableSetting() *tableSetting {
+type Printer interface {
+	Print()
+	AddRow(number int, row compoundInterest.Prediction) Printer
+	UpdateTotal(row compoundInterest.Prediction)
+}
+
+func NewPrinter() Printer {
 	return &tableSetting{
 		header: []string{
 			"Month number",
@@ -62,18 +68,7 @@ func NewTableSetting() *tableSetting {
 	}
 }
 
-func (t *tableSetting) fillFooter(footer total) {
-	t.footer = []string{
-		"",
-		"",
-		"Total",
-		accounting.FormatNumberFloat64(footer.MonthlyPayment, 2, " ", "."),
-		accounting.FormatNumberFloat64(footer.Amount, 2, " ", "."),
-		accounting.FormatNumberFloat64(footer.MonthlyDividend, 2, " ", "."),
-	}
-}
-
-func (t *tableSetting) printTable() {
+func (t *tableSetting) Print() {
 	table := tablewriter.NewWriter(os.Stdout)
 	t.fillFooter(t.total)
 
@@ -89,10 +84,21 @@ func (t *tableSetting) printTable() {
 	t.cleanData().cleanTotal()
 }
 
-func (t *tableSetting) updateTotal(row compoundInterest.Prediction) {
+func (t *tableSetting) UpdateTotal(row compoundInterest.Prediction) {
 	t.total.MonthlyPayment = t.total.MonthlyPayment + row.MonthlyPayment
 	t.total.Amount = row.Amount
 	t.total.MonthlyDividend = t.total.MonthlyDividend + row.MonthlyDividend
+}
+
+func (t *tableSetting) fillFooter(footer total) {
+	t.footer = []string{
+		"",
+		"",
+		"Total",
+		accounting.FormatNumberFloat64(footer.MonthlyPayment, 2, " ", "."),
+		accounting.FormatNumberFloat64(footer.Amount, 2, " ", "."),
+		accounting.FormatNumberFloat64(footer.MonthlyDividend, 2, " ", "."),
+	}
 }
 
 func (t *tableSetting) cleanTotal() *tableSetting {
@@ -106,7 +112,7 @@ func (t *tableSetting) cleanData() *tableSetting {
 	return t
 }
 
-func (t *tableSetting) addRow(number int, row compoundInterest.Prediction) *tableSetting {
+func (t *tableSetting) AddRow(number int, row compoundInterest.Prediction) Printer {
 	t.data = append(t.data, []string{
 		strconv.Itoa(number),
 		row.Date.Format("2006 Jan"),
