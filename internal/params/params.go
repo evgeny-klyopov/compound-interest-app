@@ -20,6 +20,13 @@ func (p *Params) GetFlags() []cli.Flag {
 
 	return []cli.Flag{
 		&cli.StringFlag{
+			Name:        "monthly-payment",
+			Required:    true,
+			HasBeenSet:  false,
+			Usage:       "monthly payment",
+			Destination: &p.MonthlyPayment,
+		},
+		&cli.StringFlag{
 			Name:        "date-start",
 			Required:    false,
 			Value:       time.Now().Format("2006-01-02"),
@@ -42,13 +49,6 @@ func (p *Params) GetFlags() []cli.Flag {
 			Usage:       "percent rate",
 			HasBeenSet:  true,
 			Destination: &p.PercentRate,
-		},
-		&cli.StringFlag{
-			Name:        "monthly-payment",
-			Required:    true,
-			HasBeenSet:  false,
-			Usage:       "monthly payment",
-			Destination: &p.MonthlyPayment,
 		},
 		&cli.StringFlag{
 			Name:        "initial-payment",

@@ -21,7 +21,7 @@ func main() {
 	app := &cli.App{
 		Name: "COMI" +
 			"",
-		Version:  "v1.0.0",
+		Version:  "v1.0.1",
 		Flags:    p.GetFlags(),
 		HelpName: "comi",
 		Usage:    "Compound Interest App",
